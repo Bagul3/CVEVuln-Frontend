@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs.page';
+import { HomePage } from '../pages/home/home.page';
 
 @Component({
     template: `<ion-nav [root]="rootPage"></ion-nav>`,
 })
 export class MyApp {
-    rootPage = TabsPage;
+    rootPage = HomePage;
 
     constructor(public platform: Platform,
                 public splashScreen: SplashScreen) {

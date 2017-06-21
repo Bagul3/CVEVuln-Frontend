@@ -4,13 +4,61 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <h2 id="title">Welcome {{user.name}}!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card>
+  <ion-card-header>
+    Explore Vuln
+  </ion-card-header>
+
+  <ion-list>
+    <button ion-item (click)="ngOnInit()">
+      <ion-icon name="cart" item-start></ion-icon>
+      Windows Server 2012
+    </button>
+
+    <button ion-item>
+      <ion-icon name="medical" item-start></ion-icon>
+      Ubuntu
+    </button>
+
+    <button ion-item>
+      <ion-icon name="cafe" item-start></ion-icon>
+      Debian
+    </button>
+
+    <button ion-item>
+      <ion-icon name="paw" item-start></ion-icon>
+      McAfee
+    </button>
+
+    <button ion-item>
+      <ion-icon name="beer" item-start></ion-icon>
+      Apache
+    </button>
+
+    <button ion-item>
+      <ion-icon name="planet" item-start></ion-icon>
+      RedHat
+    </button>
+
+    <button ion-item>
+      <ion-icon name="cart" item-start></ion-icon>
+      Windows Server 2008
+    </button>
+
+    <button ion-item>
+      <ion-icon name="medical" item-start></ion-icon>
+      JavaJdk
+    </button>
+
+    <button ion-item>
+      <ion-icon name="cafe" item-start></ion-icon>
+      JavaJre
+    </button>
+
+    <button ion-item>
+      <ion-icon name="paw" item-start></ion-icon>
+      GeoServer
+    </button>
+  </ion-list>
+</ion-card>
 </ion-content>

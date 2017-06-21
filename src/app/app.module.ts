@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home.page';
 import { TabsPage } from '../pages/tabs/tabs.page';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SimpleFormPage } from '../pages/simple-form/simple-form.page';
+import { VulnsPage } from '../pages/vulns/vulns.page';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { SimpleFormPage } from '../pages/simple-form/simple-form.page';
         HomePage,
         TabsPage,
         SimpleFormPage,
+        VulnsPage,
     ],
     imports: [
         BrowserModule,
@@ -30,8 +32,9 @@ import { SimpleFormPage } from '../pages/simple-form/simple-form.page';
         HomePage,
         TabsPage,
         SimpleFormPage,
+        VulnsPage,
     ],
-    providers: [SplashScreen],
+    providers: [SplashScreen],    
 })
 export class AppModule {
 }
