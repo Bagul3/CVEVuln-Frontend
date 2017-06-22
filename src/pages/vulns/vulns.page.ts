@@ -9,6 +9,7 @@ import { NavController } from 'ionic-angular';
 })
 export class VulnsPage {
     public vulns: string[];
+    public shownGroup: null;
     constructor(public nav: NavController) {
         this.nav = nav;           
         this.vulns = this.getWindowsVulns();
@@ -25,5 +26,16 @@ export class VulnsPage {
             }
         });
         return result.responseJSON;        
-    };   
+    };  
+
+    toggleGroup(group) {
+        if (this.isGroupShown(group)) {
+            this.shownGroup = null;
+        } else {
+            this.shownGroup = group;
+        }
+    };
+    isGroupShown(group) {
+        return this.shownGroup === group;
+    };
 }

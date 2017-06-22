@@ -3,8 +3,19 @@
     <ion-title>Vulns for {{vulns.SoftwareName}}</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content class="padding">    
+<!--<ion-content class="padding">    
     <ion-item *ngFor="let vuln of vulns.Vulnerabilities">
         {{vuln.cve_id}}
     </ion-item>
+</ion-content>-->
+<ion-content>
+  <ion-list>
+      <ion-item *ngFor="let vuln of vulns.Vulnerabilities; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+        <h3>
+          {{vuln.cve_id}}
+          <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+        </h3>
+        <div *ngIf="isGroupShown(i)">{{vuln.Summary}}</div>
+      </ion-item>
+  </ion-list>
 </ion-content>
