@@ -8,24 +8,22 @@ import { NavController } from 'ionic-angular';
     templateUrl: 'vulns.page.html',    
 })
 export class VulnsPage {
-    public vulns: any;
-
+    public vulns: string[];
     constructor(public nav: NavController) {
         this.nav = nav;           
-        this.getWindowsVulns();
+        this.vulns = this.getWindowsVulns();
+        console.log(this.vulns);
     }
 
     getWindowsVulns() {
-        //$.getJSON("http://localhost:51139/api/Vuln?service=WindowsServer2012", cs => {this.vulns = cs;});
-        $.ajax("http://localhost:51139/api/Vuln?service=WindowsServer2012", {
+        var result = $.ajax("http://localhost:51139/api/Vuln?service=WindowsServer2012",{ async: false,
             success: function(data) {
-               console.log("Data: " + data.Vulnerabilities[0].id);
-               this.vulns = data;
-               console.log("Vulns: " + this.vulns.Vulnerabilities);
+               return data;
             },
             error: function() {
                 alert("Error");
             }
-        })
+        });
+        return result.responseJSON;        
     };   
 }
