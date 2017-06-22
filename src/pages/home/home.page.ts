@@ -17,7 +17,7 @@ export class HomePage {
         this.nav = nav;          
     }
 
-    ngOnInit() {
-      this.nav.push(VulnsPage);
+    ngOnInit(service : any) {
+      this.nav.push(VulnsPage, { service : service });
    }       
 }

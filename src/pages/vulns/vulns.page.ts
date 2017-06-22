@@ -1,7 +1,7 @@
 import { Component, ViewChild  } from '@angular/core';
 import filter from 'lodash-es/filter';
 import * as $ from "jquery";
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
     selector: 'ib-page-home',
@@ -10,14 +10,14 @@ import { NavController } from 'ionic-angular';
 export class VulnsPage {
     public vulns: string[];
     public shownGroup: null;
-    constructor(public nav: NavController) {
+    constructor(public nav: NavController, private navParams: NavParams) {
         this.nav = nav;           
-        this.vulns = this.getWindowsVulns();
+        this.vulns = this.getWindowsVulns(navParams.get('service'));
         console.log(this.vulns);
     }
 
-    getWindowsVulns() {
-        var result = $.ajax("http://localhost:51139/api/Vuln?service=WindowsServer2012",{ async: false,
+    getWindowsVulns(service : string) {
+        var result = $.ajax("http://192.168.0.10:51139/api/Vuln?service=" + service,{ async: false,
             success: function(data) {
                return data;
             },
@@ -28,14 +28,14 @@ export class VulnsPage {
         return result.responseJSON;        
     };  
 
-    toggleGroup(group) {
+    toggleGroup(group : any) {
         if (this.isGroupShown(group)) {
             this.shownGroup = null;
         } else {
             this.shownGroup = group;
         }
     };
-    isGroupShown(group) {
+    isGroupShown(group: any) {
         return this.shownGroup === group;
     };
 }
