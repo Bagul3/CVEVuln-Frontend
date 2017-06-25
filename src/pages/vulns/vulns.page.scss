@@ -1,15 +1,5 @@
-.not {
-     height: 5vw; 
-     width: 5vw; 
-    border: 2px solid #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 5px gray;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-} 
 .circle-text {
-    width:15%;
+    width:100%;
 }
 .circle-text:after {
     content: "";
@@ -30,4 +20,15 @@
     margin-top:-0.5em;
     text-align:center;
     color:white;
+}
+.circle-color-red:after {
+    background:#E74C3C
+}
+
+.circle-color-amber:after {
+    background:#F5B041
+}
+
+.circle-color-green:after {
+    background:#58D68D
 }
