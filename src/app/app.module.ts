@@ -10,7 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SimpleFormPage } from '../pages/simple-form/simple-form.page';
 import { VulnsPage } from '../pages/vulns/vulns.page';
 import { OrderByPipe } from '../pages/custom.modules/orderbypipe.page';
-import { Pipe } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
     declarations: [
@@ -25,6 +25,7 @@ import { Pipe } from '@angular/core';
     ],
     imports: [
         BrowserModule,
+        HttpModule,
         IonicModule.forRoot(MyApp),
     ],
     bootstrap: [IonicApp],
