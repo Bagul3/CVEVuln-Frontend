@@ -18,7 +18,7 @@ import 'rxjs/add/operator/catch';
 })
 
 export class VulnsPage {
-    public vulns: any;
+    public vulns: Observable<any>;
     public shownGroup: null;
     public lowRiskGroup: string[] = [];
     public medRiskGroup: string[] = [];
@@ -28,17 +28,14 @@ export class VulnsPage {
     constructor(public nav: NavController, private navParams: NavParams,public http: Http) {
         this.nav = nav;    
         this.http = http;
-        this.vulns = this.getWindowsVulns(navParams.get('service')).subscribe(val => console.log(val));
+        this.vulns = this.getWindowsVulns(navParams.get('service'));
     }    
 
-    getWindowsVulns(service: any) : Observable<BaseApiResult[]> {
+    getWindowsVulns(service: any) : Observable<any> {
          if (service === 'undefined')
             return;
-         var result: any;
-         result = this.http.get("http://localhost:51139/api/Vuln?service=" + service)
-                        // ...and calling .json() on the response to return data
+         return this.http.get("http://localhost:51139/api/Vuln?service=" + service)    
                          .map((res:Response) => res.json())
-                         //...errors if any
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
      }    
 

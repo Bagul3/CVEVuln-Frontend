@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Vulns for {{vulns.SoftwareName}}</ion-title>
+    <ion-title>Vulns for {{ (vulns | async)?.SoftwareName }}</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-spinner name="bubbles"></ion-spinner>
+<!--<ion-spinner name="bubbles"></ion-spinner>-->
   <ion-content>
     <ion-item-group>
       <ion-item-divider color="light">High Risk</ion-item-divider>
-      <ion-item *ngFor="let vuln of highRiskGroup | orderBy: 'cvss_score';let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      <ion-item *ngFor="let vuln of (vulns | async)?.Vulnerabilities;let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}" >
           <ion-thumbnail item-start center text-center>
             <div class="circle-text circle-color-red" >
               <div style="vertical-align: middle;">{{vuln.cvss_score}}</div>
@@ -27,29 +27,29 @@
             <ion-note>Last updated: {{vuln.update_date}} </ion-note>
           </ion-col>
         </ion-row>
-      </div>
+        </div>
       </ion-item>
     </ion-item-group>
-    <ion-item-group>
+    <!--<ion-item-group>
       <ion-item-divider color="light">Medium Risk</ion-item-divider>
       <ion-item *ngFor="let vuln of medRiskGroup | orderBy: 'cvss_score';let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
         <ion-thumbnail item-start center text-center>
             <div class="circle-text circle-color-amber" >
-              <div style="vertical-align: middle;">{{vuln.cvss_score}}</div>
+              <div style="vertical-align: middle;">{{ (vulns | async)?.cvss_score}}</div>
             </div>
           </ion-thumbnail>
-          <h3>{{vuln.cve_id}}</h3>
+          <h3>{{ (vulns | async)?.cve_id}}</h3>
           <button color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></button>
         <div *ngIf="isGroupShown(i)">
-          <ion-card-content>{{vuln.summary}}</ion-card-content>
+          <ion-card-content>{{ (vuln | async)?.summary}}</ion-card-content>
           <ion-row>
           <ion-col>
             <button ion-button icon-left clear small>
-              <div>Published date: {{vuln.publish_date}}</div>
+              <div>Published date: {{ (vuln | async)?.publish_date}}</div>
             </button>
           </ion-col>
           <ion-col center text-center>
-            <ion-note>Last updated: {{vuln.update_date}} </ion-note>
+            <ion-note>Last updated: {{ (vuln | async)?.update_date}} </ion-note>
           </ion-col>
         </ion-row>
       </div>
@@ -60,13 +60,13 @@
       <ion-item *ngFor="let vuln of lowRiskGroup | orderBy: 'cvss_score'; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
         <ion-thumbnail item-start center text-center>
             <div class="circle-text circle-color-green" >
-              <div style="vertical-align: middle;">{{vuln.cvss_score}}</div>
+              <div style="vertical-align: middle;">{{ (vulns | async)?.cvss_score}}</div>
             </div>
           </ion-thumbnail>
-          <h3>{{vuln.cve_id}}</h3>
+          <h3>{{ (vulns | async)?.cve_id}}</h3>
           <button color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></button>
         <div *ngIf="isGroupShown(i)">
-          <ion-card-content>{{vuln.summary}}</ion-card-content>
+          <ion-card-content>{{ (vulns | async)?.summary}}</ion-card-content>
           <ion-row>
           <ion-col>
             <button ion-button icon-left clear small>
@@ -74,10 +74,10 @@
             </button>
           </ion-col>
           <ion-col center text-center>
-            <ion-note>Last updated: {{vuln.update_date}} </ion-note>
+            <ion-note>Last updated: {{ (vulns | async)?.update_date}} </ion-note>
           </ion-col>
         </ion-row>
       </div>
       </ion-item>
     </ion-item-group>
-  </ion-content>
+  </ion-content>-->
